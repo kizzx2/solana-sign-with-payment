@@ -12,6 +12,8 @@ The server will generate (by default) 6 digit number that serves as some sort of
 
 This repository is already deployed at https://solana-sign-with-payment.netlify.app. If you trust the author you can use it directly but there is no uptime guarantee. Alternatively you can deploy this repository directly as a netlify app and set the environment variables found in [`.netlify/functions/lib/env.ts`](.netlify/functions/lib/env.ts)
 
+The only variable that really needs to be set is `JWK_PRIVATE_KEY`. You can generate one a tool such as https://mkjwk.org/
+
 **Client**
 
 ```typescript
