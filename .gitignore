@@ -1,0 +1,9 @@
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+# Local Netlify folder
+.netlify
+/node_modules/

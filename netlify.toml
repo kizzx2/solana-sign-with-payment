@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/verify"
+  to = "/.netlify/functions/verify"
+  status = 200
+
+[[redirects]]
+  from = "/init"
+  to = "/.netlify/functions/init"
+  status = 200
