@@ -55,3 +55,17 @@ const { payload } = await jose.jwtVerify(payload.jwt, jwks);
 console.log(payload.from);
 console.log(payload.message);
 ```
+
+## Configuration
+
+If you run your own deployment you can change this settings by environment variable:
+
+| Env | Description | Default |
+| - | - | - |
+| `JWK_PRIVATE_KEY` | Private key in JWK JSON format. Required | |
+| `SOLANA_API_URL` | `mainnet-beta`, `testnet`, `devnet`, or REST URL of your RPC | `mainnet-beta` |
+| `PAYMENT_DESTINATION` | You can specify an address for user to send to. Leave blank for user to send SOL to back to himself | |
+| `JWT_ALGORITHM` | e.g. ES256, RS256 | `ES256` |
+| `JWT_EXPIRY` | JWT expiry in seconds, must `verify` within this timeframe | `600` |
+| `MIN_LAMPORTS` | Minimum lamports that will be requested | `100000` |
+| `MAX_LAMPORTS` | Maximum lamports that will be requested | `999999` |
