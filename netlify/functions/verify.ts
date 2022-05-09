@@ -1,5 +1,5 @@
 import { Handler } from '@netlify/functions';
-import Solana from '@solana/web3.js';
+import * as Solana from '@solana/web3.js';
 import assert from 'assert';
 import * as jose from 'jose';
 import * as env from '../lib/env';
@@ -7,7 +7,6 @@ import { getSolanaConnection } from '../lib/utils';
 
 const handler: Handler = async (event) => {
     try {
-
         assert(event.httpMethod === 'POST');
         assert(event.body);
         const j = JSON.parse(event.isBase64Encoded
@@ -57,7 +56,8 @@ const handler: Handler = async (event) => {
         assert(instr.parsed.info.source === payload.from);
 
         return {
-            statusCode: 200, body: JSON.stringify({
+            statusCode: 200,
+            body: JSON.stringify({
                 jwt: await new jose.SignJWT({
                     message: payload.message,
                     from: payload.from
