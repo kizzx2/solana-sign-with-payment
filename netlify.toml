@@ -1,4 +1,10 @@
 [[redirects]]
+  from = "/"
+  to = "https://github.com/kizzx2/solana-sign-with-payment"
+  force = true
+  status = 301
+
+[[redirects]]
   from = "/verify"
   to = "/.netlify/functions/verify"
   status = 200
