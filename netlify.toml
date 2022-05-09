@@ -13,3 +13,6 @@
   from = "/init"
   to = "/.netlify/functions/init"
   status = 200
+
+[template.environment]
+  JWK_PRIAVTE_KEY = "JWK key (JSON formatted)"

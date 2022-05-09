@@ -16,6 +16,8 @@ This repository is already deployed at https://solana-sign-with-payment.netlify.
 
 The only variable that really needs to be set is `JWK_PRIVATE_KEY`. You can generate one a tool such as https://mkjwk.org/
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kizzx2/solana-sign-with-payment)
+
 **Client**
 
 ```typescript
