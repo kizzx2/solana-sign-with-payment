@@ -8,6 +8,8 @@ Because as of writing it's still difficult for some people to sign a message in 
 
 The server will generate (by default) 6 digit number that serves as some sort of OTP. The client can then send this amount of lamports to his/her own wallet within the challenge timeframe to prove ownership of the wallet. The server will issue an JWT that can then be passed to other services, just like how you would pass a signature that is obtained from e.g. Phantom wallet.
 
+Note that this is intended to be used in an interactive setting. The signed JWT emitted by the server contains a `prevSig` which would be invalidated if the user does any other transaction in-between `init` and `verify`.
+
 ## Quick Start
 
 This repository is already deployed at https://solana-sign-with-payment.netlify.app. If you trust the author you can use it directly but there is no uptime guarantee. Alternatively you can deploy this repository directly as a netlify app and set the environment variables found in [`.netlify/functions/lib/env.ts`](.netlify/functions/lib/env.ts)
