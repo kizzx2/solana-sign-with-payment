@@ -23,11 +23,14 @@ The only variable that really needs to be set is `JWK_PRIVATE_KEY`. You can gene
 **Client**
 
 ```typescript
+// 1. Request payment amount and destination
 const resp = await (await fetch('https://solana-sign-with-payment.netlify.app/init', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ message: "hello, world!", from: window.solana.publicKey.toString() }),
 })).json();
+
+// 2. Make the payment
 const { signature } = await window.solana.signAndSendTransaction(new Transaction().add(SystemProgram.transfer({
     fromPubkey: window.solana.publicKey,
     toPubkey: new PublicKey(resp.destination),
@@ -35,12 +38,14 @@ const { signature } = await window.solana.signAndSendTransaction(new Transaction
 })));
 await connection.confirmTransaction(signature);
 
+// 3. Submit the payment signature (i.e. txid) for verification
 const resp2 = await (await fetch('https://solana-sign-with-payment.netlify.app/verify', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ jwt: resp.jwt, sig: signature }),
 })).json();
 
+// 4. We get a JWT signed by the verification service
 // Call your app with the resultant JWT
 fetch(`https://your-app.com/next-step?jwt=${resp2.jwt}`)
 ```
@@ -53,9 +58,12 @@ From the above example, your app server can verify the authenticity of the JWT b
 import * as jose from 'jose';
 //...
 const jwks = jose.createRemoteJWKSet(new URL('https://solana-sign-with-payment.netlify.app/.well-known/jwks.json'));
+
+// 5. Verify the JWT using the verification service's public key
 const { payload } = await jose.jwtVerify(payload.jwt, jwks);
 
 // Finally!
+// 6. Consume the signed message
 console.log(payload.from);
 console.log(payload.message);
 ```
