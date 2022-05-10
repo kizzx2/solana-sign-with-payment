@@ -4,9 +4,11 @@
 
 Because as of writing it's still difficult for some people to sign a message in Solana, for example: https://github.com/phantom-labs/sandbox/issues/14
 
+So we go back to basics -- just ask the user to send some fund.
+
 ## How it works
 
-The server will generate (by default) 6 digit number that serves as some sort of OTP. The client can then send this amount of lamports to his/her own wallet within the challenge timeframe to prove ownership of the wallet. The server will issue an JWT that can then be passed to other services, just like how you would pass a signature that is obtained from e.g. Phantom wallet.
+The server will generate a (by default) 6 digit number that serves as some sort of OTP. The client can then send this amount of lamports to his/her own wallet within the challenge timeframe to prove ownership of the wallet. The server will issue an JWT that can then be passed to other services, just like how you would pass a signature that is obtained from e.g. Phantom wallet.
 
 Note that this is intended to be used in an interactive setting. The signed JWT emitted by the server contains a `prevSig` which would be invalidated if the user does any other transaction in-between `init` and `verify`.
 
