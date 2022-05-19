@@ -15,4 +15,4 @@
   status = 200
 
 [template.environment]
-  JWK_PRIAVTE_KEY = "JWK key (JSON formatted)"
+  JWK_PRIVATE_KEY = "JWK key (JSON formatted)"
