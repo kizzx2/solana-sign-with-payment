@@ -27,7 +27,7 @@ const handler: Handler = async (event) => {
         const jwt1 = await new jose.SignJWT({
             message,
             from,
-            prevSig: sigs ? sigs[0].signature : null,
+            prevSig: sigs && sigs.length > 0 ? sigs[0].signature : null,
             destination,
             lamports
         }).setProtectedHeader({
